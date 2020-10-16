@@ -10,7 +10,7 @@ export default (state, action) => {
         case AGREGAR_TAREA: 
             return {
                 ...state,
-                tareas: [...state.tareas, action.payload], // crear un array nuevo de tareas con las q tenemos mas la nueva
+                tareas: [action.payload, ...state.tareas], // crear un array nuevo de tareas con las q tenemos mas la nueva
                 errortarea: false
             }
         case VALIDAR_TAREA:
