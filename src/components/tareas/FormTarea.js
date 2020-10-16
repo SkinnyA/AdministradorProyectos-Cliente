@@ -5,7 +5,7 @@ const FormTarea = () => {
 
     // extraer si un proyecto esta activo
     const proyectosContext = useContext(proyectoContext);
-    const {proyectos, obtenerProyectos} = proyectosContext
+    const {proyecto} = proyectosContext
 
     if(!proyecto) return null;
 
