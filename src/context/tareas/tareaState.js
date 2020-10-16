@@ -2,7 +2,7 @@ import React, {useReducer} from 'react';
 import TareaContext from './tareaContext';
 import TareaReducer from './tareaReducer';
 
-import {TAREAS_PROYECTO, AGREGAR_TAREA, VALIDAR_TAREA, ELIMINAR_TAREA, ESTADO_TAREA} from '../../types';
+import {TAREAS_PROYECTO, AGREGAR_TAREA, VALIDAR_TAREA, ELIMINAR_TAREA, ESTADO_TAREA, TAREA_ACTUAL} from '../../types';
 
 const TareaState = props => {
     const initialState = {
@@ -22,7 +22,8 @@ const TareaState = props => {
             {id: 13, nombre: 'Elegir  Plataforma de pago', estado: false, proyectoId: 3},
         ],
         tareasproyecto: null,
-        errortarea: false
+        errortarea: false,
+        tareaseleccionada: null
     }
 
     // crear dispatch y state
@@ -69,6 +70,14 @@ const TareaState = props => {
        })
     }
 
+    // extrae una tarea para edicion
+    const guardarTareaActual = tarea => {
+        dispatch({
+            type: TAREA_ACTUAL,
+            payload: tarea
+        })
+    }
+
     return (
         <TareaContext.Provider
         
@@ -76,11 +85,13 @@ const TareaState = props => {
             tareas: state.tareas,
             tareasproyecto: state.tareasproyecto,
             errortarea: state.errortarea,
+            tareaseleccionada: state.tareaseleccionada,
             obtenerTareas,
             agregarTarea,
             validarTarea,
             eliminarTarea,
-            cambiarEstadoTarea
+            cambiarEstadoTarea,
+            guardarTareaActual
         }}
         >
             {props.children}
