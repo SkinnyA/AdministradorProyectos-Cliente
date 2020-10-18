@@ -3,6 +3,7 @@ import {REGISTRO_EXISTOSO, REGISTRO_ERROR, OBTENER_USUARIO, LOGIN_EXISTOSO, LOGI
 export default (state, action) => {
     switch(action.type){
         case REGISTRO_EXISTOSO:
+        case LOGIN_EXISTOSO:
             localStorage.setItem('token', action.payload.token);
             return{
                 ...state,
