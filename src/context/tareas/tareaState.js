@@ -7,7 +7,6 @@ import {
     AGREGAR_TAREA, 
     VALIDAR_TAREA, 
     ELIMINAR_TAREA, 
-    ESTADO_TAREA, 
     TAREA_ACTUAL, 
     ACTUALIZAR_TAREA, 
     LIMPIAR_TAREA
@@ -47,7 +46,7 @@ const TareaState = props => {
             const resultado = await clienteAxios.post('/api/tareas', tarea);
             dispatch({
                 type: AGREGAR_TAREA,
-                payload: tarea
+                payload: resultado.data.tarea
             })
         } catch (error) {
             console.log(error);
